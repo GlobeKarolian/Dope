@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Boston.com Daily</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="auth.js"></script>
+  <script defer src="app.js"></script>
+  <script src="https://cdn.auth0.com/js/auth0-spa-js/2.1/auth0-spa-js.production.js"></script>
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-dot" title="Try clicking me…">●</span><span class="brand-name">Boston.com</span> <span class="brand-sub">Daily</span>
+    </div>
+    <div class="header-right">
+      <div id="streak" class="streak" title="Daily streak">🔥 <span id="streakCount">0</span> days</div>
+      <div class="ring" title="Daily minutes goal">
+        <svg viewBox="0 0 120 120">
+          <circle cx="60" cy="60" r="52" class="ring-bg"></circle>
+          <circle cx="60" cy="60" r="52" class="ring-fg" id="ringFg" stroke-dasharray="0 1000"></circle>
+        </svg>
+        <div class="ring-label"><span id="minutesToday">0</span>/<span id="goal">10</span>m</div>
+      </div>
+      <div id="authButtons" class="auth">
+        <button id="btnLogin" class="btn ghost">Sign in</button>
+        <button id="btnLogout" class="btn ghost" style="display:none;">Sign out</button>
+      </div>
+      <button id="btnAchievements" class="btn ghost">🏅 Achievements</button>
+      <button id="btnLeaderboard" class="btn ghost">🏆 Friends</button>
+    </div>
+  </header>
+
+  <section class="punchcard" id="punchcard" aria-label="Section punch card"></section>
+
+  <main class="layout">
+    <aside class="story-list" id="storyList" aria-label="Stories"></aside>
+    <article class="reader" id="reader">
+      <h1 id="storyTitle">Loading…</h1>
+      <div class="meta">
+        <a id="storyUrl" target="_blank" rel="noopener">Open on Boston.com ↗</a>
+        <span class="dot">•</span>
+        <span id="storyTopic"></span>
+        <span class="dot">•</span>
+        <span id="storyDuration"></span> min
+      </div>
+      <section class="summary"><p id="storySummary"></p></section>
+      <div class="controls">
+        <button class="btn" id="btnPrev">← Prev</button>
+        <button class="btn primary" id="btnComplete">✓ Complete</button>
+        <button class="btn" id="btnNext">Next →</button>
+        <label class="autoplay"><input type="checkbox" id="autoplay" checked /> Autoplay</label>
+      </div>
+      <div class="micro-feedback" id="microFeedback">Completed!</div>
+    </article>
+  </main>
+
+  <div class="toast" id="toast"></div>
+  <dialog id="leaderboardModal" class="modal"><form method="dialog" class="modal-card"><header class="modal-header"><h2>Friends Leaderboard</h2><button class="btn icon" value="cancel">✕</button></header><section class="modal-body"><ol id="leaderboard" class="leaderboard"></ol><div class="friend-tools"><div class="add-friend"><input id="friendName" placeholder="Add a name" /><button id="addFriend" class="btn">Add</button></div><small class="muted">Seeded with Boston Globe Media leadership (local demo).</small><div class="friend-io"><button id="exportFriends" class="btn ghost">Export</button><label class="btn ghost">Import<input id="importFriends" type="file" accept="application/json" hidden /></label></div></div></section></form></dialog>
+  <dialog id="achievementsModal" class="modal"><form method="dialog" class="modal-card"><header class="modal-header"><h2>Achievements</h2><button class="btn icon" value="cancel">✕</button></header><section class="modal-body"><ul id="achievementsList" class="achievements"></ul></section></form></dialog>
+  <div id="eggOverlay" class="egg-overlay"></div>
+</body>
+</html>

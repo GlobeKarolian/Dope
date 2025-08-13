@@ -1,0 +1,15 @@
+{
+  "generatedAt": "2025-08-13T04:43:36.268941Z",
+  "dailyGoalMinutes": 10,
+  "stories": [
+    {
+      "id": "seed-1",
+      "title": "Welcome",
+      "url": "https://www.boston.com/",
+      "topic": "News",
+      "section": "News",
+      "summary": "Welcome to Boston.com Daily.",
+      "durationSec": 60
+    }
+  ]
+}
